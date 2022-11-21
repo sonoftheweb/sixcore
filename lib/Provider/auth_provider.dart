@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sixcore/router/router.dart';
 import 'package:sixcore/router/routes.dart';
+
+import '../firebase_options.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   // Setters
@@ -50,6 +53,35 @@ class AuthenticationProvider extends ChangeNotifier {
         _responseMessage = 'Something went wrong. Please try again later.';
         notifyListeners();
       }
+    }
+  }
+
+  void loginWithGoogle({required BuildContext context}) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+              clientId: DefaultFirebaseOptions.currentPlatform.iosClientId)
+          .signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      if (googleAuth?.accessToken != null && googleAuth?.idToken != null) {
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        PageNavigator(context: context)
+            .nextPageOnly(page: Routes.dashboardRoute);
+      }
+      _isLoading = false;
+      notifyListeners();
+    } on FirebaseAuthException catch (e) {
+      _isLoading = false;
+      _responseMessage = e.message!;
+      notifyListeners();
     }
   }
 

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:provider/provider.dart';
 import 'package:sixcore/Provider/auth_provider.dart';
 import 'package:sixcore/Widgets/button.dart';
 import 'package:sixcore/router/router.dart';
 import 'package:sixcore/router/routes.dart';
 
-import '../../../Constants/colors.dart';
 import '../../../Utils/snackbar.dart';
 
 class LoginPage extends StatefulWidget {
@@ -103,18 +104,28 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 50.0),
             const Text('Or login with social accounts'),
-            const SizedBox(height: 20.0),
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                side: BorderSide(color: AppColor.blue),
-                foregroundColor: AppColor.blue,
-                textStyle: const TextStyle(fontSize: 11),
-              ),
-              onPressed: () {
+            const SizedBox(height: 30.0),
+            Consumer<AuthenticationProvider>(builder: (context, auth, _) {
+              return SignInButton(
+                Buttons.Google,
+                onPressed: () {
+                  auth.loginWithGoogle(context: context);
+                },
+              );
+            }),
+            const SizedBox(height: 30.0),
+            GestureDetector(
+              onTap: () {
                 PageNavigator(context: context)
                     .nextPageOnly(page: Routes.registerRoute);
               },
-              child: const Text('Register new account'),
+              child: const Text(
+                'Don\'t have an account? Create one now!',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontSize: 15,
+                ),
+              ),
             ),
           ],
         ),
