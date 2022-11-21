@@ -1,4 +1,4 @@
-package com.example.sixcore
+package com.sixcore.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '629141750196',
     projectId: 'workout-application-fltr',
     storageBucket: 'workout-application-fltr.appspot.com',
-    iosClientId: '629141750196-vr1rd1ar9t2r27kd2vlcoe5m20pt4ke9.apps.googleusercontent.com',
-    iosBundleId: 'com.example.sixcore',
+    iosClientId:
+        '629141750196-vr1rd1ar9t2r27kd2vlcoe5m20pt4ke9.apps.googleusercontent.com',
+    iosBundleId: 'com.sixcore.app',
   );
 }

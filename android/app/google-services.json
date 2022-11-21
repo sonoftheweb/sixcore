@@ -45,7 +45,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:629141750196:android:3c9c638e897febd67db2e1",
         "android_client_info": {
-          "package_name": "com.example.sixcore"
+          "package_name": "com.sixcore.app"
         }
       },
       "oauth_client": [
