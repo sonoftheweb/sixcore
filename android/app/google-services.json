@@ -7,78 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:629141750196:android:720c2bdfb48abde87db2e1",
-        "android_client_info": {
-          "package_name": "com.example.flutterwomenworkout"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "629141750196-uol1pjos19s3no16ci8s3jpj968s08hp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC3QxFLaAB2sN0uyMNDy46IxU8JkgGkYvE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "629141750196-uol1pjos19s3no16ci8s3jpj968s08hp.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "629141750196-dtocojrfsu0loputs1q8q16oulic54ak.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.woa"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:629141750196:android:3c9c638e897febd67db2e1",
-        "android_client_info": {
-          "package_name": "com.sixcore.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "629141750196-uol1pjos19s3no16ci8s3jpj968s08hp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC3QxFLaAB2sN0uyMNDy46IxU8JkgGkYvE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "629141750196-uol1pjos19s3no16ci8s3jpj968s08hp.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "629141750196-dtocojrfsu0loputs1q8q16oulic54ak.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.woa"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:629141750196:android:b2f2fe6cd48804b97db2e1",
         "android_client_info": {
           "package_name": "com.example.woa"
@@ -103,10 +31,54 @@
               "client_type": 3
             },
             {
-              "client_id": "629141750196-dtocojrfsu0loputs1q8q16oulic54ak.apps.googleusercontent.com",
+              "client_id": "629141750196-bc7jv1hpgbpk4abhdi7sdf87aphedka7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.woa"
+                "bundle_id": "com.sixcore.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629141750196:android:0423f62009d6eabb7db2e1",
+        "android_client_info": {
+          "package_name": "com.sixcore.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629141750196-v6sca0oc22p8quiri9edkv18fbac1ss9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sixcore.app",
+            "certificate_hash": "ab11ad660c64b933ad3d9dec980194f0e92ca6da"
+          }
+        },
+        {
+          "client_id": "629141750196-uol1pjos19s3no16ci8s3jpj968s08hp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3QxFLaAB2sN0uyMNDy46IxU8JkgGkYvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629141750196-uol1pjos19s3no16ci8s3jpj968s08hp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629141750196-bc7jv1hpgbpk4abhdi7sdf87aphedka7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sixcore.app"
               }
             }
           ]

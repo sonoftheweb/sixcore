@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC3QxFLaAB2sN0uyMNDy46IxU8JkgGkYvE',
-    appId: '1:629141750196:android:3c9c638e897febd67db2e1',
+    appId: '1:629141750196:android:0423f62009d6eabb7db2e1',
     messagingSenderId: '629141750196',
     projectId: 'workout-application-fltr',
     storageBucket: 'workout-application-fltr.appspot.com',
@@ -59,12 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB3QVt1MsqRU1NvDt2wkH3xmgASQnfmmow',
-    appId: '1:629141750196:ios:2e7f02f082461a657db2e1',
+    appId: '1:629141750196:ios:cb1582af405e87e77db2e1',
     messagingSenderId: '629141750196',
     projectId: 'workout-application-fltr',
     storageBucket: 'workout-application-fltr.appspot.com',
-    iosClientId:
-        '629141750196-vr1rd1ar9t2r27kd2vlcoe5m20pt4ke9.apps.googleusercontent.com',
+    androidClientId: '629141750196-v6sca0oc22p8quiri9edkv18fbac1ss9.apps.googleusercontent.com',
+    iosClientId: '629141750196-bc7jv1hpgbpk4abhdi7sdf87aphedka7.apps.googleusercontent.com',
     iosBundleId: 'com.sixcore.app',
   );
 }
