@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sixcore/Utils/firestore.dart';
 import 'package:sixcore/router/router.dart';
 import 'package:sixcore/router/routes.dart';
 
+import '../Models/user_profile.dart';
 import '../firebase_options.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
@@ -73,8 +76,17 @@ class AuthenticationProvider extends ChangeNotifier {
           idToken: googleAuth?.idToken,
         );
         await FirebaseAuth.instance.signInWithCredential(credential);
-        PageNavigator(context: context)
-            .nextPageOnly(page: Routes.dashboardRoute);
+
+        List<QueryDocumentSnapshot<UserProfile>>? userProfile =
+            await CloudFirestore().getProfile();
+
+        if (userProfile == null || userProfile.isEmpty) {
+          PageNavigator(context: context)
+              .nextPageOnly(page: Routes.socialAuthRegisterRoute);
+        } else {
+          PageNavigator(context: context)
+              .nextPageOnly(page: Routes.dashboardRoute);
+        }
       }
       _isLoading = false;
       notifyListeners();

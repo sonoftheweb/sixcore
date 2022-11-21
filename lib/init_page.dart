@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sixcore/Constants/colors.dart';
+import 'package:sixcore/Models/user_profile.dart';
+import 'package:sixcore/Utils/firestore.dart';
 import 'package:sixcore/router/router.dart';
 import 'package:sixcore/router/routes.dart';
 
@@ -30,12 +33,19 @@ class _InitPageState extends State<InitPage> {
   }
 
   Future<void> figureOutAuth(context) async {
+    // FirebaseAuth.instance.signOut();
     User? user = FirebaseAuth.instance.currentUser;
     await user?.reload();
 
-    if (user == null) {
+    List<QueryDocumentSnapshot<UserProfile>>? profile =
+        await CloudFirestore().getProfile();
+
+    if (user == null && profile == null) {
       PageNavigator(context: context).nextPageOnly(page: Paths.loginPath);
-    } else {
+    } else if (user != null && profile!.isEmpty) {
+      PageNavigator(context: context)
+          .nextPageOnly(page: Paths.socialAuthRegisterPath);
+    } else if (user != null && profile!.isNotEmpty) {
       PageNavigator(context: context).nextPageOnly(page: Paths.dashboardPath);
     }
   }

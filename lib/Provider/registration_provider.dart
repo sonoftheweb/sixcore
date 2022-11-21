@@ -86,6 +86,29 @@ class RegistrationProvider with ChangeNotifier {
     }
   }
 
+  socialSignUp({required BuildContext context}) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      await user?.updateDisplayName(_name);
+      await FirebaseFirestore.instance.collection('userProfile').add({
+        'userId': user?.uid,
+        'name': _name,
+        'height': _height,
+        'weight': _weight,
+        'age': _age,
+      });
+      _isLoading = false;
+      notifyListeners();
+      PageNavigator(context: context).nextPageOnly(page: Routes.dashboardRoute);
+    } on FirebaseAuthException catch (e) {
+      _responseMessage = e.message!;
+      notifyListeners();
+    }
+  }
+
   void clearMessage() {
     _responseMessage = "";
     notifyListeners();
