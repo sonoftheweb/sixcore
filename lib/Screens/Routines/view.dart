@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:sixcore/Constants/colors.dart';
-import 'package:sixcore/Constants/devices_and_services.dart';
 import 'package:sixcore/Provider/app_provider.dart';
 import 'package:sixcore/Provider/routine_provider.dart';
 import 'package:sixcore/router/router.dart';
@@ -487,10 +486,10 @@ class FindDeviceScreen extends StatelessWidget {
                         BuildContext context,
                         AsyncSnapshot<List<ScanResult>> snapshot,
                       ) {
-                        List<ScanResult>? devices = snapshot.data!
-                            .where(
-                                (ScanResult d) => d.device.name == deviceName)
-                            .toList();
+                        List<ScanResult>? devices = snapshot.data!;
+                        // .where(
+                        //     (ScanResult d) => d.device.name == deviceName)
+                        // .toList();
                         if (devices.isEmpty && provider.btScanRan) {
                           return SizedBox(
                             width: MediaQuery.of(context).size.width,
@@ -501,41 +500,46 @@ class FindDeviceScreen extends StatelessWidget {
                             ),
                           );
                         }
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: devices.map((ScanResult r) {
-                            return GestureDetector(
-                              onTap: () {
-                                provider.device = r.device;
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                margin: const EdgeInsets.only(bottom: 20),
-                                decoration: BoxDecoration(
-                                  color: AppColor.blue,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.settings_bluetooth_rounded,
-                                      color: AppColor.white,
+                        return Container(
+                          height: 250,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
+                              children: devices.map((ScanResult r) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    provider.device = r.device;
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    margin: const EdgeInsets.only(bottom: 20),
+                                    decoration: BoxDecoration(
+                                      color: AppColor.blue,
+                                      borderRadius: BorderRadius.circular(5),
                                     ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      r.device.name,
-                                      style: TextStyle(
-                                        color: AppColor.white,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.settings_bluetooth_rounded,
+                                          color: AppColor.white,
+                                        ),
+                                        const SizedBox(width: 5),
+                                        Text(
+                                          r.device.name,
+                                          style: TextStyle(
+                                            color: AppColor.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }).toList(),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
                         );
                       })
                   : Container(),

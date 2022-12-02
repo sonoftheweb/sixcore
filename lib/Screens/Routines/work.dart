@@ -87,8 +87,8 @@ class _WorkRoutineState extends State<WorkRoutine> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () async {
-                    await p.sendCommandsToBoard();
+                  onPressed: () {
+                    p.sendCommandsToBoard();
                   },
                   child: const Text('Trigger flashing light'),
                 ),

@@ -39,44 +39,45 @@ class AppProvider extends ChangeNotifier {
     });
   }
 
-  Future<void> connectToBLE() async {
-    await _device!.connect();
+  void connectToBLE() {
+    _device!.connect().then((_) {
+      _device!.discoverServices().then((List<BluetoothService> services) {
+        _writeService = services
+            .where((s) => s.uuid.toString() == writeServiceConst)
+            .toList()
+            .first;
 
-    if (_writeService == null ||
-        _notifyService == null &&
-            _writeServiceCharacteristics == null &&
-            _notifyServiceCharacteristics == null) {
-      List<BluetoothService> services = await _device!.discoverServices();
+        _notifyService = services
+            .where((s) => s.uuid.toString() == notifyServiceConst)
+            .toList()
+            .first;
 
-      _writeService = services
-          .where((s) => s.uuid.toString() == writeServiceConst)
-          .toList()
-          .first;
+        _writeServiceCharacteristics = _writeService!.characteristics
+            .where((c) => c.uuid.toString() == writeServiceCharacteristicsConst)
+            .toList()
+            .first;
 
-      _notifyService = services
-          .where((s) => s.uuid.toString() == notifyServiceConst)
-          .toList()
-          .first;
-
-      _writeServiceCharacteristics = _writeService!.characteristics
-          .where((c) => c.uuid.toString() == writeServiceCharacteristicsConst)
-          .toList()
-          .first;
-
-      _notifyServiceCharacteristics = _notifyService!.characteristics
-          .where((c) => c.uuid.toString() == notifyServiceCharacteristicsConst)
-          .toList()
-          .first;
-    }
+        _notifyServiceCharacteristics = _notifyService!.characteristics
+            .where(
+                (c) => c.uuid.toString() == notifyServiceCharacteristicsConst)
+            .toList()
+            .first;
+      });
+    });
   }
 
   Future<void> disconnectFromBle() async {
     await _device!.disconnect();
   }
 
-  sendCommandsToBoard() async {
+  sendCommandsToBoard() {
     // This triggers the light toggle on device
     // await writeServiceCharsFound!.write([0xa8, 0x10, 0xB8]);
-    await _writeServiceCharacteristics!.write([168, 16, 184]);
+    _writeServiceCharacteristics!
+        .write([0xa8, 0x10, 0xB8]).then((Object? value) {
+      print('Blinking light command sent');
+      print(value);
+    });
+    // await _writeServiceCharacteristics!.write([168, 16, 184]);
   }
 }
