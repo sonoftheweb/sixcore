@@ -5,6 +5,7 @@ import 'package:sixcore/Constants/styles.dart';
 import 'package:sixcore/Provider/app_provider.dart';
 import 'package:sixcore/Provider/auth_provider.dart';
 import 'package:sixcore/Provider/registration_provider.dart';
+import 'package:sixcore/Provider/routine_provider.dart';
 import 'package:sixcore/Provider/user_provider.dart';
 import 'package:sixcore/router/pages.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => RegistrationProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider()),
         ChangeNotifierProvider(create: (context) => AppProvider()),
+        ChangeNotifierProvider(create: (context) => RoutineProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -38,15 +38,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Need BLE permission</string>
+	<string>This application requires the use of Bluetooth to connect to specific peripheral devices.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Need BLE permission</string>
+	<string>This application requires the use of Bluetooth to connect to specific peripheral devices.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Need Location permission</string>
+	<string>Please grant access to location when using this application.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Need Location permission</string>
+	<string>Please grant access to location when using this application.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Need Location permission</string>
+	<string>Please grant access to location when using this application.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

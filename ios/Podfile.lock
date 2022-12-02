@@ -54,12 +54,12 @@ PODS:
   - FirebaseFirestore/WithLeveldb (10.2.0):
     - FirebaseFirestore/Base
   - Flutter (1.0.0)
-  - flutter_blue (0.0.1):
+  - flutter_blue_plus (0.0.1):
     - Flutter
-    - flutter_blue/Protos (= 0.0.1)
-  - flutter_blue/Protos (0.0.1):
+    - flutter_blue_plus/Protos (= 0.0.1)
+  - flutter_blue_plus/Protos (0.0.1):
     - Flutter
-    - Protobuf (~> 3.11.4)
+    - Protobuf (~> 3.11)
   - google_sign_in_ios (0.0.1):
     - Flutter
     - GoogleSignIn (~> 6.2)
@@ -96,7 +96,7 @@ PODS:
   - platform_device_id (0.0.1):
     - Flutter
   - PromisesObjC (2.1.1)
-  - Protobuf (3.11.4)
+  - Protobuf (3.21.9)
   - ReachabilitySwift (5.0.0)
   - shared_preferences_ios (0.0.1):
     - Flutter
@@ -113,7 +113,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `10.2.0`)
   - Flutter (from `Flutter`)
-  - flutter_blue (from `.symlinks/plugins/flutter_blue/ios`)
+  - flutter_blue_plus (from `.symlinks/plugins/flutter_blue_plus/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - platform_device_id (from `.symlinks/plugins/platform_device_id/ios`)
@@ -156,8 +156,8 @@ EXTERNAL SOURCES:
     :tag: 10.2.0
   Flutter:
     :path: Flutter
-  flutter_blue:
-    :path: ".symlinks/plugins/flutter_blue/ios"
+  flutter_blue_plus:
+    :path: ".symlinks/plugins/flutter_blue_plus/ios"
   google_sign_in_ios:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
   permission_handler_apple:
@@ -189,7 +189,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 091bde13e47bb1c5e9fe397634f3593dc390430f
   FirebaseFirestore: 8efd95c87f0210125fbd50d1a894e2693053c9c9
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_blue: eeb381dc4727a0954dede73515f683865494b370
+  flutter_blue_plus: 6787777145d615de01828f3a9fa423c3c702f0b3
   google_sign_in_ios: 4f85eb9f937450765c8573bb85fd8cd6a5af675c
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
@@ -199,11 +199,11 @@ SPEC CHECKSUMS:
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   platform_device_id: 81b3e2993881f87d0c82ef151dc274df4869aef5
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
-  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
+  Protobuf: 02524ec14183fe08fb259741659e79683788158b
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
 
-PODFILE CHECKSUM: 96276670b2f917239149cc6513194e3bd5f8db51
+PODFILE CHECKSUM: c8dc442caaf35cf2806b63b7e414ab098d1a70d0
 
 COCOAPODS: 1.11.3

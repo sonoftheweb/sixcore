@@ -16,7 +16,7 @@ final appThemeData = {
       bodyText2: TextStyle(color: AppColor.greyShade800),
       subtitle1: TextStyle(color: AppColor.greyShade800),
     ),
-    backgroundColor: Colors.grey.shade100,
+    backgroundColor: AppColor.greyShade100,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color.fromARGB(255, 53, 62, 125),
@@ -59,6 +59,7 @@ final appThemeData = {
         ),
       ),
     ),
+    visualDensity: VisualDensity.adaptivePlatformDensity,
   ),
   AppTheme.darkTheme: ThemeData.dark().copyWith(
     useMaterial3: true,
@@ -82,13 +83,13 @@ final appThemeData = {
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColor.whiteT,
+      backgroundColor: AppColor.teal,
       elevation: 0,
       scrolledUnderElevation: 0,
       titleTextStyle: TextStyle(
         fontSize: 21,
         fontWeight: FontWeight.w600,
-        color: AppColor.blue,
+        color: AppColor.white,
       ),
       toolbarTextStyle: TextStyle(
         fontSize: 18,
@@ -111,5 +112,6 @@ final appThemeData = {
         ),
       ),
     ),
+    visualDensity: VisualDensity.adaptivePlatformDensity,
   ),
 };

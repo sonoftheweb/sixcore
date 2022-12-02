@@ -21,6 +21,12 @@ class _AnimatedAppbarState extends State<AnimatedAppbar>
   late Animation<double> _animation;
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 700));
@@ -52,32 +58,36 @@ class _AnimatedAppbarState extends State<AnimatedAppbar>
           children: [
             Builder(
               builder: (context) {
-                return Consumer<AppProvider>(builder: (context, provider, _) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    if (provider.isDrawerOpen) {
-                      showIcon();
-                    } else {
-                      hideIcon();
-                    }
-                  });
-                  return IconButton(
-                    onPressed: () {
-                      if (_animation.value == 1) {
-                        provider.isDrawerOpen = false;
-                        hideIcon();
-                      } else {
-                        provider.isDrawerOpen = true;
-                        showIcon();
-                      }
-                      Scaffold.of(context).openDrawer();
-                    },
-                    icon: AnimatedIcon(
-                      color: AppColor.white,
-                      icon: AnimatedIcons.menu_close,
-                      progress: _animation,
-                    ),
-                  );
-                });
+                return Consumer<AppProvider>(
+                  builder: (context, provider, _) {
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) {
+                        if (provider.isDrawerOpen) {
+                          showIcon();
+                        } else {
+                          hideIcon();
+                        }
+                      },
+                    );
+                    return IconButton(
+                      onPressed: () {
+                        if (_animation.value == 1) {
+                          provider.isDrawerOpen = false;
+                          hideIcon();
+                        } else {
+                          provider.isDrawerOpen = true;
+                          showIcon();
+                        }
+                        Scaffold.of(context).openDrawer();
+                      },
+                      icon: AnimatedIcon(
+                        color: AppColor.white,
+                        icon: AnimatedIcons.menu_close,
+                        progress: _animation,
+                      ),
+                    );
+                  },
+                );
               },
             ),
             Expanded(

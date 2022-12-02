@@ -8,6 +8,7 @@ class AppColor {
   static Color greyShade800 = Colors.grey.shade800;
   static Color greyShade400 = Colors.grey.shade400;
   static Color greyShade300 = Colors.grey.shade300;
+  static Color greyShade100 = Colors.grey.shade100;
   static Color white = const Color.fromARGB(255, 213, 213, 213);
   static Color blue = const Color.fromARGB(255, 53, 62, 125);
   static Color teal = const Color.fromARGB(255, 97, 210, 164);

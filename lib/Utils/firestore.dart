@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sixcore/Models/db_refs.dart';
 
 import '../Models/user_profile.dart';
 
@@ -11,14 +12,8 @@ class CloudFirestore {
       return null;
     }
 
-    final profileRef = FirebaseFirestore.instance
-        .collection('userProfile')
-        .withConverter<UserProfile>(
-          fromFirestore: (snapshot, _) =>
-              UserProfile.fromJson(snapshot.data()!),
-          toFirestore: (userProfile, _) => userProfile.toJson(),
-        );
-    List<QueryDocumentSnapshot<UserProfile>> userProfile = await profileRef
+    List<QueryDocumentSnapshot<UserProfile>> userProfile = await DbRefs
+        .userProfileRef
         .where('userId', isEqualTo: currentUser.uid)
         .limit(1)
         .get()
