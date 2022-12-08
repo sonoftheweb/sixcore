@@ -72,12 +72,59 @@ class AppProvider extends ChangeNotifier {
 
   sendCommandsToBoard() {
     // This triggers the light toggle on device
-    // await writeServiceCharsFound!.write([0xa8, 0x10, 0xB8]);
     _writeServiceCharacteristics!
         .write([0xa8, 0x10, 0xB8]).then((Object? value) {
       print('Blinking light command sent');
       print(value);
     });
     // await _writeServiceCharacteristics!.write([168, 16, 184]);
+  }
+
+  sendCustomCommandsToBoard({
+    required String start,
+    required String command,
+    required String crc,
+    required String value,
+    required String channel,
+  }) {
+    int intStart = int.parse(start);
+    int intCommand = int.parse(command);
+    int intCrc = int.parse(crc);
+    int? intValue = value.isNotEmpty ? int.parse(value) : null;
+    int? intChannel = channel.isNotEmpty ? int.parse(channel) : null;
+
+    // has no value and channel (simple light triggers)
+    if (intValue == null && intChannel == null) {
+      _writeServiceCharacteristics!.write(
+        [intStart, intCommand, intCrc],
+      ).then((Object? callbackValue) {
+        print(
+          'Started with $start, executed command $intCommand:$command with value $intValue:$value and CRC $intCrc:$crc sent to device!',
+        );
+        print('Value returned: $callbackValue');
+      });
+    }
+
+    // has value
+    if (intChannel == null && intValue != null) {
+      _writeServiceCharacteristics!
+          .write([intStart, intCommand, intValue, intCrc]).then(
+              (Object? callbackValue) {
+        print(
+            'Started with $start, executed command $intCommand:$command with value $intValue:$value and CRC $intCrc:$crc sent to device!');
+        print('Value returned: $callbackValue');
+      });
+    }
+
+    // has value and channel
+    if (intChannel != null && intValue != null) {
+      _writeServiceCharacteristics!
+          .write([intStart, intCommand, intChannel, intValue, intCrc]).then(
+              (Object? callbackValue) {
+        print(
+            'Started with $start, executed command $intCommand:$command with value $intValue:$value and CRC $intCrc:$crc sent to device!');
+        print('Value returned: $callbackValue');
+      });
+    }
   }
 }
