@@ -9,6 +9,7 @@ import 'package:sixcore/router/routes.dart';
 
 import '../../Models/workout_model.dart';
 import '../../Provider/routine_provider.dart';
+import '../../Utils/number_to_base.dart';
 import '../../Utils/routine.dart';
 
 class WorkRoutine extends StatefulWidget {
@@ -41,7 +42,7 @@ class _WorkRoutineState extends State<WorkRoutine> {
   void initState() {
     if (context.read<RoutineProvider>().viewRoutine != null) {
       // connect to BLE and source for services and chars
-      context.read<AppProvider>().connectToBLE();
+      //context.read<AppProvider>().connectToBLE();
 
       routineId = context.read<RoutineProvider>().viewRoutine!['id'];
       workout = context.read<RoutineProvider>().viewRoutine!['workout'];
@@ -247,9 +248,6 @@ class _WorkRoutineState extends State<WorkRoutine> {
                                 style: TextStyle(
                                   color: AppColor.white,
                                 ),
-                                onChanged: (_) {
-                                  calculateCRC();
-                                },
                                 controller: _crc,
                                 decoration: InputDecoration(
                                   labelText: 'CRC',
@@ -340,16 +338,12 @@ class _WorkRoutineState extends State<WorkRoutine> {
     int intStart = isNumeric(string: _start.text) ? int.parse(_start.text) : 0;
     int intCommand =
         isNumeric(string: _command.text) ? int.parse(_command.text) : 0;
-    int intValue = _value.text.isNotEmpty && isNumeric(string: _value.text)
-        ? int.parse(_value.text)
-        : 0;
+    int intValue = isNumeric(string: _value.text) ? int.parse(_value.text) : 0;
     int intChannel =
-        _channel.text.isNotEmpty && isNumeric(string: _channel.text)
-            ? int.parse(_channel.text)
-            : 0;
+        isNumeric(string: _channel.text) ? int.parse(_channel.text) : 0;
 
     int calculatedCrc = intStart + intCommand + intValue + intChannel;
-    _crc.text = calculatedCrc.toString();
+    _crc.text = (intToUnit8[calculatedCrc] ?? "");
   }
 
   bool isNumeric({required String string}) {

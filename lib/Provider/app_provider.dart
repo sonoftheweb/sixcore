@@ -39,31 +39,29 @@ class AppProvider extends ChangeNotifier {
     });
   }
 
-  void connectToBLE() {
-    _device!.connect().then((_) {
-      _device!.discoverServices().then((List<BluetoothService> services) {
-        _writeService = services
-            .where((s) => s.uuid.toString() == writeServiceConst)
-            .toList()
-            .first;
+  Future<void> connectToBLE() async {
+    await _device!.connect();
+    List<BluetoothService> services = await _device!.discoverServices();
 
-        _notifyService = services
-            .where((s) => s.uuid.toString() == notifyServiceConst)
-            .toList()
-            .first;
+    _writeService = services
+        .where((s) => s.uuid.toString() == writeServiceConst)
+        .toList()
+        .first;
 
-        _writeServiceCharacteristics = _writeService!.characteristics
-            .where((c) => c.uuid.toString() == writeServiceCharacteristicsConst)
-            .toList()
-            .first;
+    _notifyService = services
+        .where((s) => s.uuid.toString() == notifyServiceConst)
+        .toList()
+        .first;
 
-        _notifyServiceCharacteristics = _notifyService!.characteristics
-            .where(
-                (c) => c.uuid.toString() == notifyServiceCharacteristicsConst)
-            .toList()
-            .first;
-      });
-    });
+    _writeServiceCharacteristics = _writeService!.characteristics
+        .where((c) => c.uuid.toString() == writeServiceCharacteristicsConst)
+        .toList()
+        .first;
+
+    _notifyServiceCharacteristics = _notifyService!.characteristics
+        .where((c) => c.uuid.toString() == notifyServiceCharacteristicsConst)
+        .toList()
+        .first;
   }
 
   Future<void> disconnectFromBle() async {
@@ -72,12 +70,16 @@ class AppProvider extends ChangeNotifier {
 
   sendCommandsToBoard() {
     // This triggers the light toggle on device
-    _writeServiceCharacteristics!
-        .write([0xa8, 0x10, 0xB8]).then((Object? value) {
-      print('Blinking light command sent');
-      print(value);
-    });
-    // await _writeServiceCharacteristics!.write([168, 16, 184]);
+    if (_writeServiceCharacteristics != null) {
+      _writeServiceCharacteristics!
+          .write([0xa8, 0x10, 0xB8]).then((Object? value) {
+        print('Blinking light command sent');
+        print(value);
+      });
+    } else {
+      print(
+          "Waiting for device to set _writeServiceCharacteristics in provider. Device is quite slow");
+    }
   }
 
   sendCustomCommandsToBoard({
@@ -94,35 +96,26 @@ class AppProvider extends ChangeNotifier {
     int? intChannel = channel.isNotEmpty ? int.parse(channel) : null;
 
     // has no value and channel (simple light triggers)
+    List<int> bleCommands = [];
     if (intValue == null && intChannel == null) {
-      _writeServiceCharacteristics!.write(
-        [intStart, intCommand, intCrc],
-      ).then((Object? callbackValue) {
-        print(
-          'Started with $start, executed command $intCommand:$command with value $intValue:$value and CRC $intCrc:$crc sent to device!',
-        );
-        print('Value returned: $callbackValue');
-      });
+      bleCommands = [intStart, intCommand, intCrc];
     }
 
     // has value
     if (intChannel == null && intValue != null) {
-      _writeServiceCharacteristics!
-          .write([intStart, intCommand, intValue, intCrc]).then(
-              (Object? callbackValue) {
-        print(
-            'Started with $start, executed command $intCommand:$command with value $intValue:$value and CRC $intCrc:$crc sent to device!');
-        print('Value returned: $callbackValue');
-      });
+      bleCommands = [intStart, intCommand, intValue, intCrc];
     }
 
     // has value and channel
     if (intChannel != null && intValue != null) {
+      bleCommands = [intStart, intCommand, intChannel, intValue, intCrc];
+    }
+
+    if (bleCommands.isNotEmpty) {
       _writeServiceCharacteristics!
-          .write([intStart, intCommand, intChannel, intValue, intCrc]).then(
-              (Object? callbackValue) {
-        print(
-            'Started with $start, executed command $intCommand:$command with value $intValue:$value and CRC $intCrc:$crc sent to device!');
+          .write(bleCommands)
+          .then((Object? callbackValue) {
+        print(bleCommands);
         print('Value returned: $callbackValue');
       });
     }

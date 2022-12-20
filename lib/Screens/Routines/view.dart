@@ -560,14 +560,20 @@ class FindDeviceScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      PageNavigator(context: context)
-                          .nextPage(page: Paths.workRoutinePath);
-                    },
-                    icon: const Icon(Icons.play_circle_outline_rounded),
-                    label: const Text('Begin Routine with workouts'),
-                  ),
+                  provider.isLoading
+                      ? Center(
+                          child:
+                              CircularProgressIndicator(color: AppColor.teal),
+                        )
+                      : ElevatedButton.icon(
+                          onPressed: () {
+                            provider.connectToBLE().then((_) =>
+                                PageNavigator(context: context)
+                                    .nextPage(page: Paths.workRoutinePath));
+                          },
+                          icon: const Icon(Icons.play_circle_outline_rounded),
+                          label: const Text('Begin Routine with workouts'),
+                        ),
                   const SizedBox(height: 10),
                   ElevatedButton.icon(
                     onPressed: () {
