@@ -33,10 +33,12 @@ class _WorkRoutineState extends State<WorkRoutine> {
 
   /*TEST PARAMS*/
   final TextEditingController _start = TextEditingController();
-  final TextEditingController _command = TextEditingController();
-  final TextEditingController _value = TextEditingController();
+  final TextEditingController _command_1 = TextEditingController();
+  final TextEditingController _command_2 = TextEditingController();
+  final TextEditingController _command_3 = TextEditingController();
+  final TextEditingController _command_4 = TextEditingController();
+
   final TextEditingController _crc = TextEditingController();
-  final TextEditingController _channel = TextEditingController();
 
   @override
   void initState() {
@@ -44,6 +46,8 @@ class _WorkRoutineState extends State<WorkRoutine> {
       // connect to BLE and source for services and chars
       //context.read<AppProvider>().connectToBLE();
 
+      _start.text = '0xa8';
+      _crc.text = '0xa8';
       routineId = context.read<RoutineProvider>().viewRoutine!['id'];
       workout = context.read<RoutineProvider>().viewRoutine!['workout'];
       workoutSettings = json.decode(workout.workoutSettings);
@@ -79,10 +83,11 @@ class _WorkRoutineState extends State<WorkRoutine> {
   @override
   void dispose() {
     _start.dispose();
-    _command.dispose();
-    _value.dispose();
+    _command_1.dispose();
+    _command_2.dispose();
+    _command_3.dispose();
+    _command_4.dispose();
     _crc.dispose();
-    _channel.dispose();
 
     context.read<AppProvider>().disconnectFromBle();
     super.dispose();
@@ -159,9 +164,9 @@ class _WorkRoutineState extends State<WorkRoutine> {
                                 onChanged: (_) {
                                   calculateCRC();
                                 },
-                                controller: _command,
+                                controller: _command_1,
                                 decoration: InputDecoration(
-                                  labelText: 'Command',
+                                  labelText: 'Command 1',
                                   labelStyle: TextStyle(color: AppColor.white),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide:
@@ -192,9 +197,9 @@ class _WorkRoutineState extends State<WorkRoutine> {
                                 onChanged: (_) {
                                   calculateCRC();
                                 },
-                                controller: _value,
+                                controller: _command_2,
                                 decoration: InputDecoration(
-                                  labelText: 'Value',
+                                  labelText: 'Command 2',
                                   labelStyle: TextStyle(color: AppColor.white),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide:
@@ -218,9 +223,9 @@ class _WorkRoutineState extends State<WorkRoutine> {
                                 onChanged: (_) {
                                   calculateCRC();
                                 },
-                                controller: _channel,
+                                controller: _command_3,
                                 decoration: InputDecoration(
-                                  labelText: 'Channel',
+                                  labelText: 'Command 3',
                                   labelStyle: TextStyle(color: AppColor.white),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide:
@@ -243,6 +248,32 @@ class _WorkRoutineState extends State<WorkRoutine> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize: MainAxisSize.max,
                           children: [
+                            Expanded(
+                              child: TextFormField(
+                                style: TextStyle(
+                                  color: AppColor.white,
+                                ),
+                                controller: _command_4,
+                                onChanged: (_) {
+                                  calculateCRC();
+                                },
+                                decoration: InputDecoration(
+                                  labelText: 'Command 4',
+                                  labelStyle: TextStyle(color: AppColor.white),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: AppColor.white),
+                                    borderRadius: BorderRadius.circular(5.5),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: AppColor.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
                             Expanded(
                               child: TextFormField(
                                 style: TextStyle(
@@ -274,16 +305,14 @@ class _WorkRoutineState extends State<WorkRoutine> {
                                 MaterialStatePropertyAll<Color>(AppColor.teal),
                           ),
                           onPressed: () {
-                            if (_start.text.isNotEmpty &&
-                                _command.text.isNotEmpty &&
-                                _crc.text.isNotEmpty) {
-                              p.sendCustomCommandsToBoard(
-                                  start: _start.text,
-                                  command: _command.text,
-                                  value: _value.text,
-                                  channel: _channel.text,
-                                  crc: _crc.text);
-                            }
+                            p.sendCustomCommandsToBoard(
+                              start: _start.text,
+                              command_1: _command_1.text,
+                              command_2: _command_2.text,
+                              command_3: _command_3.text,
+                              command_4: _command_4.text,
+                              crc: _crc.text,
+                            );
                           },
                           child: const Text('Send Command to board'),
                         )
@@ -336,14 +365,19 @@ class _WorkRoutineState extends State<WorkRoutine> {
 
   void calculateCRC() {
     int intStart = isNumeric(string: _start.text) ? int.parse(_start.text) : 0;
-    int intCommand =
-        isNumeric(string: _command.text) ? int.parse(_command.text) : 0;
-    int intValue = isNumeric(string: _value.text) ? int.parse(_value.text) : 0;
-    int intChannel =
-        isNumeric(string: _channel.text) ? int.parse(_channel.text) : 0;
+    int intCommand1 =
+        isNumeric(string: _command_1.text) ? int.parse(_command_1.text) : 0;
+    int intCommand2 =
+        isNumeric(string: _command_2.text) ? int.parse(_command_2.text) : 0;
+    int intCommand3 =
+        isNumeric(string: _command_3.text) ? int.parse(_command_3.text) : 0;
+    int intCommand4 =
+        isNumeric(string: _command_4.text) ? int.parse(_command_4.text) : 0;
 
-    int calculatedCrc = intStart + intCommand + intValue + intChannel;
-    _crc.text = (intToUnit8[calculatedCrc] ?? "");
+    int calculatedCrc =
+        intStart + intCommand1 + intCommand2 + intCommand3 + intCommand4;
+
+    _crc.text = (intToUnit8[calculatedCrc] ?? "Overload");
   }
 
   bool isNumeric({required String string}) {

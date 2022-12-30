@@ -71,9 +71,14 @@ class AppProvider extends ChangeNotifier {
   sendCommandsToBoard() {
     // This triggers the light toggle on device
     if (_writeServiceCharacteristics != null) {
+      // _writeServiceCharacteristics!
+      //     .write([0xa8, 0x10, 0xB8]).then((Object? value) {
+      //   print('Blinking light command sent');
+      //   print(value);
+      // });
       _writeServiceCharacteristics!
-          .write([0xa8, 0x10, 0xB8]).then((Object? value) {
-        print('Blinking light command sent');
+          .write([0xa8, 0x02, 0x10, 0x00, 0x32, 0xdd]).then((Object? value) {
+        print('test with unit16');
         print(value);
       });
     } else {
@@ -84,31 +89,47 @@ class AppProvider extends ChangeNotifier {
 
   sendCustomCommandsToBoard({
     required String start,
-    required String command,
+    required String command_1,
+    required String command_2,
+    required String command_3,
+    required String command_4,
     required String crc,
-    required String value,
-    required String channel,
   }) {
-    int intStart = int.parse(start);
-    int intCommand = int.parse(command);
-    int intCrc = int.parse(crc);
-    int? intValue = value.isNotEmpty ? int.parse(value) : null;
-    int? intChannel = channel.isNotEmpty ? int.parse(channel) : null;
+    int? intStart = int.tryParse(start);
+    int? intCommand1 = int.tryParse(command_1);
+    int? intCommand2 = int.tryParse(command_2);
+    int? intCommand3 = int.tryParse(command_3);
+    int? intCommand4 = int.tryParse(command_4);
+    int? intCrc = int.tryParse(crc);
 
-    // has no value and channel (simple light triggers)
     List<int> bleCommands = [];
-    if (intValue == null && intChannel == null) {
-      bleCommands = [intStart, intCommand, intCrc];
+
+    if (intStart != null) {
+      bleCommands.add(intStart);
+    } else {
+      bleCommands.add(168);
     }
 
-    // has value
-    if (intChannel == null && intValue != null) {
-      bleCommands = [intStart, intCommand, intValue, intCrc];
+    if (intCommand1 != null) {
+      bleCommands.add(intCommand1);
     }
 
-    // has value and channel
-    if (intChannel != null && intValue != null) {
-      bleCommands = [intStart, intCommand, intChannel, intValue, intCrc];
+    if (intCommand2 != null) {
+      bleCommands.add(intCommand2);
+    }
+
+    if (intCommand3 != null) {
+      bleCommands.add(intCommand3);
+    }
+
+    if (intCommand4 != null) {
+      bleCommands.add(intCommand4);
+    }
+
+    if (intCrc != null) {
+      bleCommands.add(intCrc);
+    } else {
+      bleCommands.add(168);
     }
 
     if (bleCommands.isNotEmpty) {
