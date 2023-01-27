@@ -71,16 +71,16 @@ class AppProvider extends ChangeNotifier {
   sendCommandsToBoard() {
     // This triggers the light toggle on device
     if (_writeServiceCharacteristics != null) {
-      // _writeServiceCharacteristics!
-      //     .write([0xa8, 0x10, 0xB8]).then((Object? value) {
-      //   print('Blinking light command sent');
-      //   print(value);
-      // });
       _writeServiceCharacteristics!
-          .write([0xa8, 0x02, 0x10, 0x00, 0x32, 0xdd]).then((Object? value) {
-        print('test with unit16');
+          .write([0xa8, 0x10, 0xB8]).then((Object? value) {
+        print('Blinking light command sent');
         print(value);
       });
+      // _writeServiceCharacteristics!
+      //     .write([0xa8, 0x02, 0x10, 0x00, 0x32, 0xdd]).then((Object? value) {
+      //   print('test with unit16');
+      //   print(value);
+      // });
     } else {
       print(
           "Waiting for device to set _writeServiceCharacteristics in provider. Device is quite slow");
