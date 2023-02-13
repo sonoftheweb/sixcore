@@ -2,6 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:sixcore/Screens/Dashboard/dashboard.dart';
 import 'package:sixcore/Screens/Dashboard/routine_library.dart';
+import 'package:sixcore/Screens/Tests/test_view.dart';
 import 'package:sixcore/router/pages.dart';
 
 import '../../Constants/colors.dart';
@@ -42,6 +43,7 @@ class _DashboardPageState extends State<DashboardPage> {
             children: <Widget>[
               const DashboardWidget(),
               const RoutineLibraryWidget(),
+              const TestView(),
               Container(
                 color: Colors.green,
               ),

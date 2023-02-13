@@ -189,7 +189,7 @@ class _ViewRoutineState extends State<ViewRoutine> {
                             ),
                           ),
                           Text(
-                            ' minutes ${workoutSettings['mode']} routine',
+                            ' minutes ${workoutSettings['mode']}',
                             style: TextStyle(
                               color: AppColor.greyShade800,
                               fontSize: 15,

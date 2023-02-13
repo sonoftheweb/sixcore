@@ -44,6 +44,11 @@ class BottomNavMenuItems {
         'widget': Container(),
       },
       {
+        'title': 'Tests',
+        'icon': Icons.warning_amber_outlined,
+        'widget': Container(),
+      },
+      {
         'title': 'Progress',
         'icon': Icons.multiline_chart,
         'widget': Container(),

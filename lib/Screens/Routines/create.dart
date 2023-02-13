@@ -527,80 +527,86 @@ class _CreateRoutineState extends State<CreateRoutine> {
                   ),
                   const Padding(padding: EdgeInsets.only(top: 20.0)),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30.0,
-                      right: 30.0,
-                      bottom: 20.0,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        QuantitySelectorWidget(
-                          label: 'Biceps',
-                          callback: (value) {
-                            routineProvider.createRoutine['routineAreas']
-                                [BodyAreas.biceps] = value;
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(right: 2),
+                          child: QuantitySelectorWidget(
+                            label: 'Biceps',
+                            callback: (value) {
+                              routineProvider.createRoutine['routineAreas']
+                                  [BodyAreas.biceps] = value;
+                            },
+                          ),
                         ),
-                        QuantitySelectorWidget(
-                          label: 'Triceps',
-                          callback: (value) {
-                            routineProvider.createRoutine['routineAreas']
-                                [BodyAreas.triceps] = value;
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2),
+                          child: QuantitySelectorWidget(
+                            label: 'Triceps',
+                            callback: (value) {
+                              routineProvider.createRoutine['routineAreas']
+                                  [BodyAreas.triceps] = value;
+                            },
+                          ),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30.0,
-                      right: 30.0,
-                      bottom: 20.0,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        QuantitySelectorWidget(
-                          label: 'Chest',
-                          callback: (value) {
-                            routineProvider.createRoutine['routineAreas']
-                                [BodyAreas.chest] = value;
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(right: 2),
+                          child: QuantitySelectorWidget(
+                            label: 'Chest',
+                            callback: (value) {
+                              routineProvider.createRoutine['routineAreas']
+                                  [BodyAreas.chest] = value;
+                            },
+                          ),
                         ),
-                        QuantitySelectorWidget(
-                          label: 'Abdomen',
-                          callback: (value) {
-                            routineProvider.createRoutine['routineAreas']
-                                [BodyAreas.abdomen] = value;
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2),
+                          child: QuantitySelectorWidget(
+                            label: 'Abdomen',
+                            callback: (value) {
+                              routineProvider.createRoutine['routineAreas']
+                                  [BodyAreas.abdomen] = value;
+                            },
+                          ),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30.0,
-                      right: 30.0,
-                      bottom: 20.0,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        QuantitySelectorWidget(
-                          label: 'Thighs',
-                          callback: (value) {
-                            routineProvider.createRoutine['routineAreas']
-                                [BodyAreas.thighs] = value;
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(right: 2),
+                          child: QuantitySelectorWidget(
+                            label: 'Thighs',
+                            callback: (value) {
+                              routineProvider.createRoutine['routineAreas']
+                                  [BodyAreas.thighs] = value;
+                            },
+                          ),
                         ),
-                        QuantitySelectorWidget(
-                          label: 'Calf',
-                          callback: (value) {
-                            routineProvider.createRoutine['routineAreas']
-                                [BodyAreas.calf] = value;
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2),
+                          child: QuantitySelectorWidget(
+                            label: 'Calf',
+                            callback: (value) {
+                              routineProvider.createRoutine['routineAreas']
+                                  [BodyAreas.calf] = value;
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -942,79 +948,85 @@ class _CreateRoutineState extends State<CreateRoutine> {
                 ),
                 const Padding(padding: EdgeInsets.only(top: 20.0)),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 30.0,
-                    right: 30.0,
-                    bottom: 20.0,
-                  ),
+                  padding: const EdgeInsets.only(bottom: 20.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      QuantitySelectorWidget(
-                        label: 'Trapezius',
-                        callback: (value) {
-                          routineProvider.createRoutine['routineAreas']
-                              [BodyAreas.trapezium] = value;
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(right: 2),
+                        child: QuantitySelectorWidget(
+                          label: 'Trapezius',
+                          callback: (value) {
+                            routineProvider.createRoutine['routineAreas']
+                                [BodyAreas.trapezium] = value;
+                          },
+                        ),
                       ),
-                      QuantitySelectorWidget(
-                        label: 'Upper Back',
-                        callback: (value) {
-                          routineProvider.createRoutine['routineAreas']
-                              [BodyAreas.upperBack] = value;
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2),
+                        child: QuantitySelectorWidget(
+                          label: 'Upper Back',
+                          callback: (value) {
+                            routineProvider.createRoutine['routineAreas']
+                                [BodyAreas.upperBack] = value;
+                          },
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 30.0,
-                    right: 30.0,
-                    bottom: 20.0,
-                  ),
+                  padding: const EdgeInsets.only(bottom: 20.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      QuantitySelectorWidget(
-                        label: 'Lower Back',
-                        callback: (value) {
-                          routineProvider.createRoutine['routineAreas']
-                              [BodyAreas.lowerBack] = value;
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(right: 2),
+                        child: QuantitySelectorWidget(
+                          label: 'Lower Back',
+                          callback: (value) {
+                            routineProvider.createRoutine['routineAreas']
+                                [BodyAreas.lowerBack] = value;
+                          },
+                        ),
                       ),
-                      QuantitySelectorWidget(
-                        label: 'Glutes',
-                        callback: (value) {
-                          routineProvider.createRoutine['routineAreas']
-                              [BodyAreas.glutes] = value;
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2),
+                        child: QuantitySelectorWidget(
+                          label: 'Glutes',
+                          callback: (value) {
+                            routineProvider.createRoutine['routineAreas']
+                                [BodyAreas.glutes] = value;
+                          },
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 30.0,
-                    right: 30.0,
-                    bottom: 20.0,
-                  ),
+                  padding: const EdgeInsets.only(bottom: 20.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      QuantitySelectorWidget(
-                        label: 'Quads',
-                        callback: (value) {
-                          routineProvider.createRoutine['routineAreas']
-                              [BodyAreas.quads] = value;
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(right: 2),
+                        child: QuantitySelectorWidget(
+                          label: 'Quads',
+                          callback: (value) {
+                            routineProvider.createRoutine['routineAreas']
+                                [BodyAreas.quads] = value;
+                          },
+                        ),
                       ),
-                      QuantitySelectorWidget(
-                        label: 'Hamstrings',
-                        callback: (value) {
-                          routineProvider.createRoutine['routineAreas']
-                              [BodyAreas.hamstrings] = value;
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2),
+                        child: QuantitySelectorWidget(
+                          label: 'Hamstrings',
+                          callback: (value) {
+                            routineProvider.createRoutine['routineAreas']
+                                [BodyAreas.hamstrings] = value;
+                          },
+                        ),
                       ),
                     ],
                   ),

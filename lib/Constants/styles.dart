@@ -11,10 +11,10 @@ final appThemeData = {
   AppTheme.lightTheme: ThemeData.light().copyWith(
     useMaterial3: true,
     textTheme: TextTheme(
-      headline1: TextStyle(color: AppColor.blue),
-      headline2: TextStyle(color: AppColor.blue),
-      bodyText2: TextStyle(color: AppColor.greyShade800),
-      subtitle1: TextStyle(color: AppColor.greyShade800),
+      displayLarge: TextStyle(color: AppColor.blue),
+      displayMedium: TextStyle(color: AppColor.blue),
+      bodyMedium: TextStyle(color: AppColor.greyShade800),
+      titleMedium: TextStyle(color: AppColor.greyShade800),
     ),
     backgroundColor: AppColor.greyShade100,
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -45,6 +45,9 @@ final appThemeData = {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
+      textTheme: TextTheme(
+        subtitle1: TextStyle(color: Colors.pinkAccent),
+      ),
       prefixIconColor: AppColor.blue,
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(

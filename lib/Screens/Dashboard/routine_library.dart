@@ -71,7 +71,7 @@ class _RoutineLibraryWidgetState extends State<RoutineLibraryWidget>
                   size: 12,
                 ),
                 label: const Text(
-                  'new routine',
+                  'new',
                   style: TextStyle(
                     fontSize: 14,
                   ),

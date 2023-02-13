@@ -43,13 +43,13 @@ class LastActivities extends StatelessWidget {
             size: 20,
           ),
           Text(
-            'Completed $time mins',
+            '$time mins',
             style: TextStyle(
               color: AppColor.blue,
             ),
           ),
           Text(
-            'Burnt $calorieBurn kCal',
+            '$calorieBurn kCal',
             style: TextStyle(
               color: AppColor.blue,
             ),
