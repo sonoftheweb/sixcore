@@ -45,32 +45,27 @@ final appThemeData = {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      textTheme: TextTheme(
-        subtitle1: TextStyle(color: Colors.pinkAccent),
-      ),
+      contentPadding: const EdgeInsets.all(16),
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      border: _outlineInputBorder(AppColor.greyShade400),
+      enabledBorder: _outlineInputBorder(AppColor.greyShade400),
+      focusedBorder: _outlineInputBorder(AppColor.blue),
+      errorBorder: _outlineInputBorder(AppColor.error),
+      focusedErrorBorder: _outlineInputBorder(AppColor.error),
       prefixIconColor: AppColor.blue,
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          width: 3,
-          color: AppColor.blue,
-        ),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          width: 3,
-          color: AppColor.blue,
-        ),
-      ),
+      focusColor: AppColor.blue,
+      errorStyle: _buildTextStyle(AppColor.error, size: 12),
+      helperStyle: _buildTextStyle(AppColor.greyShade400, size: 12),
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   ),
   AppTheme.darkTheme: ThemeData.dark().copyWith(
     useMaterial3: true,
     textTheme: TextTheme(
-      headline1: TextStyle(color: AppColor.teal),
-      headline2: TextStyle(color: AppColor.teal),
-      bodyText2: TextStyle(color: AppColor.white),
-      subtitle1: TextStyle(color: AppColor.white),
+      displayLarge: TextStyle(color: AppColor.teal),
+      displayMedium: TextStyle(color: AppColor.teal),
+      bodyMedium: TextStyle(color: AppColor.white),
+      titleMedium: TextStyle(color: AppColor.white),
     ),
     backgroundColor: AppColor.blue,
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -118,3 +113,20 @@ final appThemeData = {
     visualDensity: VisualDensity.adaptivePlatformDensity,
   ),
 };
+
+_buildTextStyle(Color color, {double? size}) {
+  return TextStyle(
+    color: color,
+    fontSize: size ?? 12,
+  );
+}
+
+OutlineInputBorder _outlineInputBorder(Color color) {
+  return OutlineInputBorder(
+    borderRadius: const BorderRadius.all(Radius.circular(6)),
+    borderSide: BorderSide(
+      width: 2,
+      color: color,
+    ),
+  );
+}

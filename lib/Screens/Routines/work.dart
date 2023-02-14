@@ -158,9 +158,7 @@ class _WorkRoutineState extends State<WorkRoutine> {
                             const SizedBox(width: 10),
                             Expanded(
                               child: TextFormField(
-                                style: TextStyle(
-                                  color: AppColor.white,
-                                ),
+                                style: TextStyle(color: AppColor.white),
                                 onChanged: (_) {
                                   calculateCRC();
                                 },
@@ -191,9 +189,7 @@ class _WorkRoutineState extends State<WorkRoutine> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                style: TextStyle(
-                                  color: AppColor.white,
-                                ),
+                                style: TextStyle(color: AppColor.white),
                                 onChanged: (_) {
                                   calculateCRC();
                                 },

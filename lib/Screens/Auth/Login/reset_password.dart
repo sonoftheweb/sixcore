@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Constants/colors.dart';
 import '../../../Provider/auth_provider.dart';
 import '../../../Utils/snackbar.dart';
 import '../../../Widgets/button.dart';
@@ -87,6 +88,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     return TextFormField(
       controller: _email,
       keyboardType: TextInputType.emailAddress,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.email),
         hintText: 'Enter your registered email',

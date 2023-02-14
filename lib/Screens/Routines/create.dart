@@ -1056,6 +1056,7 @@ class _CreateRoutineState extends State<CreateRoutine> {
             ),
             const SizedBox(height: 10.0),
             TextFormField(
+              style: TextStyle(color: AppColor.blue),
               controller: _nameCtrl,
               decoration: InputDecoration(
                 hintText: 'Enter your routine name',

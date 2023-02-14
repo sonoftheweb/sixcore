@@ -7,6 +7,7 @@ import 'package:sixcore/Widgets/button.dart';
 import 'package:sixcore/router/router.dart';
 import 'package:sixcore/router/routes.dart';
 
+import '../../../Constants/colors.dart';
 import '../../../Utils/snackbar.dart';
 
 class LoginPage extends StatefulWidget {
@@ -137,6 +138,7 @@ class _LoginPageState extends State<LoginPage> {
     return TextFormField(
       controller: _email,
       keyboardType: TextInputType.emailAddress,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.email),
         hintText: 'Enter your registered email',
@@ -148,6 +150,7 @@ class _LoginPageState extends State<LoginPage> {
     return TextFormField(
       controller: _password,
       obscureText: true,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.security),
         hintText: 'Enter a password',

@@ -3,6 +3,7 @@ library quantity_input;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:sixcore/Constants/colors.dart';
 
 import 'icon-button.widget.dart';
 
@@ -191,7 +192,7 @@ class _QuantityInputState extends State<QuantityInput> {
                         child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: TextFormField(
-                                style: const TextStyle(color: Colors.black45),
+                                style: TextStyle(color: AppColor.blue),
                                 controller: _controller,
                                 textAlign: TextAlign.center,
                                 decoration: widget.decoration,

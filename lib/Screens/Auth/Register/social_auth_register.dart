@@ -228,6 +228,7 @@ class _SocialAuthRegistrationPageState
   TextFormField _nameField() {
     return TextFormField(
       controller: _name,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.supervised_user_circle),
         hintText: 'Your full name',

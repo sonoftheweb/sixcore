@@ -238,6 +238,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextFormField _nameField() {
     return TextFormField(
       controller: _name,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.supervised_user_circle),
         hintText: 'Your full name',
@@ -249,6 +250,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return TextFormField(
       controller: _email,
       keyboardType: TextInputType.emailAddress,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.email_rounded),
         hintText: 'Your email address',
@@ -260,6 +262,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return TextFormField(
       controller: _password,
       obscureText: true,
+      style: TextStyle(color: AppColor.blue),
       decoration: const InputDecoration(
         prefixIcon: Icon(Icons.password_rounded),
         hintText: 'Your password',
